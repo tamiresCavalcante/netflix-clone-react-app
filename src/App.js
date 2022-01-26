@@ -9,6 +9,7 @@ function App () {
 
   const [movieList, setmovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
+  const[blackHeader, setBlackHeader] = useState(false);
 
   useEffect(() => {
     const loadAll = async () => {
@@ -28,10 +29,26 @@ function App () {
     loadAll();
   }, []);
 
+  useEffect(()=>{
+    const scrollListener = () => {
+      if(window.scrollY > 10) {
+        setBlackHeader(true);
+      }else{
+        setBlackHeader(false);
+      }      
+    }
+    window.addEventListener('scroll', scrollListener);
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    }
+  },[]);
+
+
   return (
     <div className="page">
 
-      <Header />
+      <Header black={blackHeader} />
 
       {featuredData && 
         <FeaturedMovie item={featuredData} />
@@ -44,10 +61,18 @@ function App () {
           </div>
         ))}
       </section>
-      {/* Header
-      Destaques
-      Listas
-      Rodapé */}
+
+      <footer>
+        Feito com <span role="img" aria-label="coracao">🧡</span> pela Tamires Cvalcante<br/>
+        Direitos de imagem para NetFlix<br />
+        Dados pegos do site Themoviedb.org
+      </footer>
+
+      {/* {movieList.length <= 0 &&
+        <div className="loading">
+          <img src="https://www.filmelier.com/pt/br/news/wp-content/uploads/2020/03/netflix-loading.gif" alt="Carregando"/>
+        </div>
+      } */}
     </div>
   );
 }
