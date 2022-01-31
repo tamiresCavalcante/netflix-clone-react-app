@@ -5,7 +5,7 @@ import MovieRow from './components/MovieRow';
 import FeaturedMovie from './components/FeaturedMovie';
 import Header from './components/Header';
 
-function App () {
+export default () => {
 
   const [movieList, setmovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
@@ -55,26 +55,24 @@ function App () {
       }
 
       <section className="lists">
-        {movieList.map((item, key) => (
-          <div>
-            <MovieRow key={key} title={item.title} items={item.items} />
-          </div>
+        {movieList.map((item, key) => ( 
+            <MovieRow key={key} title={item.title} items={item.items} />         
         ))}
       </section>
 
       <footer>
-        Feito com <span role="img" aria-label="coracao">🧡</span> pela Tamires Cvalcante<br/>
+        Feito com <span role="img" aria-label="coracao">🧡</span> pela Tamires Cavalcante<br/>
         Direitos de imagem para NetFlix<br />
         Dados pegos do site Themoviedb.org
       </footer>
 
-      {/* {movieList.length <= 0 &&
+      {movieList.length <= 0 &&
         <div className="loading">
           <img src="https://www.filmelier.com/pt/br/news/wp-content/uploads/2020/03/netflix-loading.gif" alt="Carregando"/>
         </div>
-      } */}
+      }
     </div>
   );
 }
 
-export default App;
+

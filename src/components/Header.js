@@ -3,7 +3,7 @@ import './Header.css';
 import Netflix from '../components/img/netflix.png';
 import User from '../components/img/user.png'
 
-function Header({black}) {
+export default ({black}) => {
   return (
       
       <header className={black ? "black" : ""}>
@@ -21,4 +21,3 @@ function Header({black}) {
   );
 }
 
-export default Header;

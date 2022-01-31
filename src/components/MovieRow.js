@@ -3,7 +3,7 @@ import './MovieRow.css';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
-function MovieRow ({title, items}) {
+export default ({title, items}) => {
 
     const [scrollX, setScrollX ] = useState(0);
 
@@ -22,7 +22,6 @@ function MovieRow ({title, items}) {
         if((window.innerWidth-lisW) > x){
             x = (window.innerWidth-lisW) - 60;
         }
-
         setScrollX(x);
     }
 
@@ -56,4 +55,3 @@ function MovieRow ({title, items}) {
     );
 }
 
-export default MovieRow;
